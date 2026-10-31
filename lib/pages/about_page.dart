@@ -76,7 +76,7 @@ class AboutPage extends StatelessWidget {
           const _SectionTitle('Tentang Aplikasi'),
           const SizedBox(height: 8),
           const Text(
-            'Kopi Nusantara adalah katalog statis yang memperkenalkan biji kopi dari berbagai daerah Indonesia: karakter rasa, asal, harga, dan cara menyeduhnya. Aplikasi ini dibuat untuk tugas UTS Mobile Programming.',
+            'Kopi Nusantara adalah katalog statis yang memperkenalkan biji kopi dari berbagai daerah Indonesia: karakter rasa, asal, tautan info biji, dan cara menyeduhnya. Fitur Temukan Kopimu membantu memilih kopi sesuai selera. Aplikasi ini dibuat untuk tugas UTS Mobile Programming.',
             style: TextStyle(fontSize: 14.5, height: 1.65, color: coffeeDark),
           ),
           const SizedBox(height: 24),
