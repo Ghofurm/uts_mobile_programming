@@ -5,6 +5,7 @@ import 'pages/about_page.dart';
 import 'pages/brew_guide_page.dart';
 import 'pages/coffee_detail_page.dart';
 import 'pages/coffee_list_page.dart';
+import 'pages/find_coffee_page.dart';
 import 'theme.dart';
 
 void main() {
@@ -41,7 +42,9 @@ class HomePage extends StatelessWidget {
           children: [
             const _BrandBar(),
             const SizedBox(height: 20),
-            _HeroBanner(onTap: () => _open(context, const CoffeeListPage())),
+            _FindCoffeeBanner(
+              onTap: () => _open(context, const FindCoffeePage()),
+            ),
             const SizedBox(height: 28),
             Text(
               'Jelajahi',
@@ -131,15 +134,15 @@ class _BrandBar extends StatelessWidget {
   }
 }
 
-class _HeroBanner extends StatelessWidget {
-  const _HeroBanner({required this.onTap});
+class _FindCoffeeBanner extends StatelessWidget {
+  const _FindCoffeeBanner({required this.onTap});
 
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      clipBehavior: Clip.antiAlias,
+      padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
           begin: Alignment.topLeft,
@@ -155,63 +158,66 @@ class _HeroBanner extends StatelessWidget {
           ),
         ],
       ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.all(24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+            decoration: BoxDecoration(
+              color: Colors.white.withValues(alpha: 0.12),
+              borderRadius: BorderRadius.circular(999),
+            ),
+            child: const Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.12),
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                  child: const Icon(
-                    Icons.emoji_food_beverage_outlined,
-                    color: latte,
-                    size: 26,
-                  ),
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  'Secangkir cerita\ndari tiap daerah',
-                  style: TextStyle(
-                    color: cream,
-                    fontSize: 27,
-                    height: 1.2,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                const SizedBox(height: 10),
+                Icon(Icons.auto_awesome, color: latte, size: 14),
+                SizedBox(width: 6),
                 Text(
-                  'Kenali karakter, asal, dan cara seduh kopi terbaik Indonesia.',
+                  'FITUR UTAMA',
                   style: TextStyle(
-                    color: cream.withValues(alpha: 0.78),
-                    height: 1.5,
+                    color: latte,
+                    fontSize: 10,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 1.1,
                   ),
-                ),
-                const SizedBox(height: 20),
-                const Row(
-                  children: [
-                    Text(
-                      'Mulai menjelajah',
-                      style: TextStyle(
-                        color: latte,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    SizedBox(width: 6),
-                    Icon(Icons.arrow_forward, color: latte, size: 18),
-                  ],
                 ),
               ],
             ),
           ),
-        ),
+          const SizedBox(height: 18),
+          const Text(
+            'Temukan Kopimu',
+            style: TextStyle(
+              color: cream,
+              fontSize: 30,
+              height: 1.15,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            'Jawab 3 pertanyaan singkat, dan kami carikan kopi Nusantara yang paling cocok dengan seleramu.',
+            style: TextStyle(color: cream.withValues(alpha: 0.78), height: 1.5),
+          ),
+          const SizedBox(height: 22),
+          FilledButton.icon(
+            onPressed: onTap,
+            icon: const Icon(Icons.tune, size: 18),
+            label: const Text('Mulai Pencocokan'),
+            style: FilledButton.styleFrom(
+              backgroundColor: cream,
+              foregroundColor: coffeeDark,
+              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+              textStyle: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w700,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(14),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

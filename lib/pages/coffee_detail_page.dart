@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../data/coffee.dart';
 import '../theme.dart';
+import '../widgets/coffee_info_link.dart';
 import 'brew_guide_page.dart';
 
 class CoffeeDetailPage extends StatelessWidget {
@@ -80,24 +81,7 @@ class CoffeeDetailPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 12),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 14,
-                  vertical: 8,
-                ),
-                decoration: BoxDecoration(
-                  color: coffeeDark,
-                  borderRadius: BorderRadius.circular(999),
-                ),
-                child: Text(
-                  coffee.price,
-                  style: const TextStyle(
-                    color: cream,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
+              CoffeeInfoLink(url: coffee.infoUrl, prominent: true),
             ],
           ),
           const SizedBox(height: 20),
